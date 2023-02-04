@@ -1,0 +1,21 @@
+Theme
+	_id							| MongoDB_ID
+	themeName				| String
+	fontFamily			| String
+	fontColor				| String
+	backgroundColor | String
+
+User
+	_id										| MongoDB_ID
+	username							| String
+	password							| String hashed
+	email									|	String
+	phoneNumber 					| String
+	birthdate							| Date
+	themeID								| Number 
+	skills								| String []
+	projects							|	Project []
+		projectTitle				| String
+		projectDescription 	|	String
+		projectSkills	 			| String []
+		projectURL					| String

@@ -1,0 +1,30 @@
+{
+  "name": "3431-portfolio-project",
+  "version": "1.0.0",
+  "description": "CSE 340 Portfolio project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dh5harris/341-portfolio-project.git"
+  },
+  "author": "Daniel Harris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dh5harris/341-portfolio-project/issues"
+  },
+  "homepage": "https://github.com/dh5harris/341-portfolio-project#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^5.0.0",
+    "swagger-ui-express": "^4.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
