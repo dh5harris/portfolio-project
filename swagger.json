@@ -154,14 +154,7 @@
           }
         }
       }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-		}
+    }
   },
   "definitions": {
     "user": {
