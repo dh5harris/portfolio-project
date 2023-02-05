@@ -14,7 +14,10 @@
   },
 	"server": {
 		"url":"virtserver.swaggerhub.com",
-		"basePath": "/DH5HARRIS_1/portfolio/1.0.0"
+		"basePath": "/DH5HARRIS_1/portfolio/1.0.0",
+		"schemes": [
+			"https"
+		]
 	},
   "host": "three41-portfolio-project.onrender.com",
   "basePath": "/",
