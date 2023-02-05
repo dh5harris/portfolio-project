@@ -1,6 +1,8 @@
 // Localhost
 ###
 GET http://localhost:8080/user
+###
+GET http://localhost:8080/user/djones HTTP/1.1
 
 ###
 POST http://localhost:8080/user HTTP/1.1
@@ -19,7 +21,11 @@ Content-Type: application/json
 
 // Production
 ###
-POST https://three41-portfolio-project.onrender.com/user HTTP/1.1
+GET https://three41-portfolio-project.onrender.com/  HTTP/1.1
+
+
+###
+POST https://three41-portfolio-project.onrender.com/ HTTP/1.1
 Content-Type: application/json
 
 {

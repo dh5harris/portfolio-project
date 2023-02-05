@@ -9,9 +9,10 @@ const getAll = async(req, res) => {
   });
 };
 
-const getSingle = async(req, res) => {
+const getUser = async(req, res) => {
   const userId = new ObjectId(req.params.id);
-  const result = await mongodb.getDb().db('portfolioproject').collection('users').find({_id: userId});
+	const user = {username: req.body.username};
+  const result = await mongodb.getDb().db('portfolioproject').collection('users').find({_id: userId},user);
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists[0]);
@@ -70,4 +71,4 @@ const deleteUser = async(req, res) => {
 }
 
 
-module.exports = {getAll, getSingle, createUser, updateUser, deleteUser};
+module.exports = {getAll, getUser, createUser, updateUser, deleteUser};
