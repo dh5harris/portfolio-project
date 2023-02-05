@@ -12,6 +12,10 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
+	"server": {
+		"url":"virtserver.swaggerhub.com",
+		"basePath": "/DH5HARRIS_1/portfolio/1.0.0"
+	},
   "host": "three41-portfolio-project.onrender.com",
   "basePath": "/",
   "schemes": [
