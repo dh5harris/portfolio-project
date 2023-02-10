@@ -14,12 +14,27 @@
 	},
   "host": "three41-portfolio-project.onrender.com",
   "basePath": "/",
+	"tags": [
+		{
+			"name": "theme",
+			"description": "Operations for themes"
+		},
+		{
+			"name": "user",
+			"description": "Operations about user"
+		},
+		{
+			"name": "Not yet implemented",
+			"description": "These API endpoints have not been created at this time"
+		}
+	],
   "schemes": [
     "https"
   ],
   "paths": {
-    "/theme/": {
+    "/theme": {
       "get": {
+				"tags":["theme"],
         "summary": "searches theme",
         "description": "By passing in the appropriate options, you can search for\navailable themes\n",
         "operationId": "searchTheme",
@@ -70,8 +85,9 @@
         }
       }
     },
-    "/user/": {
+    "/user": {
       "get": {
+				"tags":["user"],
         "summary": "searches user",
         "description": "By passing in the appropriate options, you can search for\nall the users in the system\n",
         "operationId": "searchUser",
@@ -122,6 +138,94 @@
         }
       },
       "post": {
+				"tags":["user"],
+        "summary": "adds an user",
+        "description": "Adds a user to the system",
+        "operationId": "addUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "User item to add",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        }
+      }
+    },
+		"/user/{username}": {
+      "get": {
+				"tags":["user"],
+        "summary": "searches for a specific user",
+        "description": "By passing in the appropriate options, you can search for\none specific user in the system\n",
+        "operationId": "searchUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "searchString",
+            "in": "query",
+            "description": "pass an optional search string for looking up a user",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "number of records to skip for pagination",
+            "required": false,
+            "type": "integer",
+            "minimum": 0,
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of records to return",
+            "required": false,
+            "type": "integer",
+            "maximum": 50,
+            "minimum": 0,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+      "post": {
+				"tags":["user"],
         "summary": "adds an user",
         "description": "Adds a user to the system",
         "operationId": "addUser",
