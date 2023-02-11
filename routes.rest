@@ -79,4 +79,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE https://three41-portfolio-project.onrender.com/user/djones1  HTTP/1.1
+DELETE https://three41-portfolio-project.onrender.com/user/bob  HTTP/1.1
