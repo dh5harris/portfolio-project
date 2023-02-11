@@ -12,7 +12,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
 	},
-  "host": "three41-portfolio-project.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
 	"tags": [
 		{
@@ -29,7 +29,7 @@
 		}
 	],
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/theme": {
@@ -159,25 +159,6 @@
             "description": "The username is required for looking up a user",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "skip",
-            "in": "query",
-            "description": "number of records to skip for pagination",
-            "required": false,
-            "type": "integer",
-            "minimum": 0,
-            "format": "int32"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "maximum number of records to return",
-            "required": false,
-            "type": "integer",
-            "maximum": 50,
-            "minimum": 0,
-            "format": "int32"
           }
         ],
         "responses": {
@@ -207,6 +188,13 @@
           "application/json"
         ],
         "parameters": [
+					{
+            "name": "username",
+            "in": "query",
+            "description": "The username is required for looking up a user",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "body",
             "name": "user",
@@ -244,25 +232,6 @@
             "description": "The username is required for deleting a user",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "skip",
-            "in": "query",
-            "description": "number of records to skip for pagination",
-            "required": false,
-            "type": "integer",
-            "minimum": 0,
-            "format": "int32"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "maximum number of records to return",
-            "required": false,
-            "type": "integer",
-            "maximum": 50,
-            "minimum": 0,
-            "format": "int32"
           }
         ],
         "responses": {
