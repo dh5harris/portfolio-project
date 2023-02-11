@@ -35,7 +35,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8080/user/djones12 HTTP/1.1
+DELETE http://localhost:8080/user/bob HTTP/1.1
 
 
 
@@ -45,7 +45,7 @@ DELETE http://localhost:8080/user/djones12 HTTP/1.1
 GET https://three41-portfolio-project.onrender.com/user  HTTP/1.1
 
 ###
-GET https://three41-portfolio-project.onrender.com/user/djones1  HTTP/1.1
+GET https://three41-portfolio-project.onrender.com/user/bob  HTTP/1.1
 
 
 ###
@@ -53,12 +53,12 @@ POST https://three41-portfolio-project.onrender.com/user HTTP/1.1
 Content-Type: application/json
 
 {
-	"username":"djones12",
+	"username":"bob",
 	"password":"password1",
-	"email":"djones1234@gmail.com",
+	"email":"bob1234@gmail.com",
 	"phoneNumber":"555-555-5555",
-	"themeID":1,
-	"birthdate":"06/01/1991",
+	"themeID":"1",
+	"birthdate":"06/01/2001",
 	"skills":["php, javascript"],
 	"projects":""
 }
@@ -72,9 +72,9 @@ Content-Type: application/json
 	"password":"noPassword12",
 	"email":"bob1234@gmail.com",
 	"phoneNumber":"555-555-5555",
-	"themeID":1,
+	"themeID":"1",
 	"birthdate":"06/01/1991",
-	"skills": ["php, javascript"],
+	"skills": ["HTML, php, javascript"],
 	"projects":""
 }
 
