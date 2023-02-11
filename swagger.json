@@ -88,39 +88,10 @@
     "/user": {
       "get": {
 				"tags":["user"],
-        "summary": "searches user",
-        "description": "By passing in the appropriate options, you can search for\nall the users in the system\n",
-        "operationId": "searchUser",
+        "summary": "Get all users",
+        "operationId": "searchAllUsers",
         "produces": [
           "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "searchString",
-            "in": "query",
-            "description": "pass an optional search string for looking up a user",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "skip",
-            "in": "query",
-            "description": "number of records to skip for pagination",
-            "required": false,
-            "type": "integer",
-            "minimum": 0,
-            "format": "int32"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "maximum number of records to return",
-            "required": false,
-            "type": "integer",
-            "maximum": 50,
-            "minimum": 0,
-            "format": "int32"
-          }
         ],
         "responses": {
           "200": {
@@ -139,7 +110,7 @@
       },
       "post": {
 				"tags":["user"],
-        "summary": "adds an user",
+        "summary": "adds a user",
         "description": "Adds a user to the system",
         "operationId": "addUser",
         "consumes": [
@@ -153,7 +124,7 @@
             "in": "body",
             "name": "user",
             "description": "User item to add",
-            "required": false,
+            "required": true,
             "schema": {
               "$ref": "#/definitions/user"
             }
@@ -183,10 +154,10 @@
         ],
         "parameters": [
           {
-            "name": "searchString",
+            "name": "username",
             "in": "query",
-            "description": "pass an optional search string for looking up a user",
-            "required": false,
+            "description": "The username is required for looking up a user",
+            "required": true,
             "type": "string"
           },
           {
@@ -224,11 +195,11 @@
           }
         }
       },
-      "post": {
+      "put": {
 				"tags":["user"],
-        "summary": "adds an user",
-        "description": "Adds a user to the system",
-        "operationId": "addUser",
+        "summary": "updates a specific user",
+        "description": "Updates a specific user to the system",
+        "operationId": "updateUser",
         "consumes": [
           "application/json"
         ],
@@ -240,7 +211,7 @@
             "in": "body",
             "name": "user",
             "description": "User item to add",
-            "required": false,
+            "required": true,
             "schema": {
               "$ref": "#/definitions/user"
             }
@@ -255,6 +226,57 @@
           },
           "409": {
             "description": "an existing item already exists"
+          }
+        }
+      },
+			"delete": {
+				"tags":["user"],
+        "summary": "deletes a specific user",
+        "description": "By passing in the appropriate options, you can delete \none specific user in the system\n",
+        "operationId": "deleteUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "The username is required for deleting a user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "number of records to skip for pagination",
+            "required": false,
+            "type": "integer",
+            "minimum": 0,
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of records to return",
+            "required": false,
+            "type": "integer",
+            "maximum": 50,
+            "minimum": 0,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
           }
         }
       }
