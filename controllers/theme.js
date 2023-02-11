@@ -1,9 +1,8 @@
 const mongodb = require('../db/connect');
-const ObjectId = require('mongodb').ObjectId;
 
 const getTheme = async(req, res) => {
-	const themeName = new ObjectId(req.params.themeName)
-  const result = await mongodb.getDb().db('portfolioproject').collection('themes').find({themeName: themeName});
+	const themeName = req.params.themeName;
+  const result = await mongodb.getDb().db('portfolioproject').collection('themes').find(themeName);
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
