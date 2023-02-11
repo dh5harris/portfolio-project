@@ -53,7 +53,6 @@ const updateUser = async(req, res) => {
 		projects: req.body.projects
   };
   const response = await mongodb.getDb().db('portfolioproject').collection('users').replaceOne(username, user);
-  console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
   } else {
@@ -65,7 +64,6 @@ const updateUser = async(req, res) => {
 const deleteUser = async(req, res) => {
   const username = {username: req.params.username};
   const response = await mongodb.getDb().db('portfolioproject').collection('users').deleteOne(username);
-  console.log(response);
   if (response.deletedCount > 0) {
     res.status(200).send();
   } else {
