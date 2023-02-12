@@ -35,39 +35,11 @@
     "/theme": {
       "get": {
 				"tags":["theme"],
-        "summary": "searches theme",
+        "summary": "returns all themes",
         "description": "By passing in the appropriate options, you can search for\navailable themes\n",
         "operationId": "searchTheme",
         "produces": [
           "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "searchString",
-            "in": "query",
-            "description": "pass an optional search string for looking up a theme",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "skip",
-            "in": "query",
-            "description": "number of records to skip for pagination",
-            "required": false,
-            "type": "integer",
-            "minimum": 0,
-            "format": "int32"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "maximum number of records to return",
-            "required": false,
-            "type": "integer",
-            "maximum": 50,
-            "minimum": 0,
-            "format": "int32"
-          }
         ],
         "responses": {
           "200": {
@@ -81,6 +53,40 @@
           },
           "400": {
             "description": "bad input parameter"
+          }
+        }
+      },
+			"post": {
+				"tags":["theme"],
+        "summary": "adds a new theme",
+        "description": "Adds a theme to the system",
+        "operationId": "addTheme",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "theme",
+            "description": "Theme item to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/theme"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
           }
         }
       }
@@ -293,7 +299,7 @@
         "themeName": {
           "type": "string"
         },
-        "fontFamily": {
+        "fontSize": {
           "type": "string"
         },
         "fontColor": {
