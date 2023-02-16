@@ -196,7 +196,7 @@
         "parameters": [
 					{
             "name": "username",
-            "in": "query",
+            "in": "path",
             "description": "The username is required for looking up a user",
             "required": true,
             "type": "string"
@@ -234,7 +234,7 @@
         "parameters": [
           {
             "name": "username",
-            "in": "query",
+            "in": "path",
             "description": "The username is required for deleting a user",
             "required": true,
             "type": "string"
@@ -276,7 +276,7 @@
         "birthdate": {
           "type": "string"
         },
-        "themeID": {
+        "themeName": {
           "type": "string"
         },
         "skills": {
