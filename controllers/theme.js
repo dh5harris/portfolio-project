@@ -1,4 +1,5 @@
 const mongodb = require('../db/connect');
+const { themeSchema } = require('../validate/validate_schema');
 
 
 const getAll = async(req, res) => {
@@ -19,12 +20,13 @@ const getAll = async(req, res) => {
 // };
 
 const createTheme = async(req, res) => {
-  const theme = {
+  let theme = {
     themeName: req.body.themeName,
     fontSize: req.body.fontSize,
     fontColor: req.body.fontColor,
     backgroundColor: req.body.backgroundColor
   };
+	theme = await themeSchema.validateAsync(theme);
   const response = await mongodb.getDb().db('portfolioproject').collection('themes').insertOne(theme);
   if (response.acknowledged) {
     res.status(201).json(response);

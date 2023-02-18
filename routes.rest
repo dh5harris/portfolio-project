@@ -33,8 +33,7 @@ Content-Type: application/json
 	"phoneNumber":"555-555-5555",
 	"themeName":"default",
 	"birthdate":"06/01/1991",
-	"skills":["php, javascript"],
-	"projects":""
+	"skills":["php, javascript"]
 }
 
 ###
@@ -48,8 +47,7 @@ Content-Type: application/json
 	"phoneNumber":"555-555-5555",
 	"themeName":"school",
 	"birthdate":"06/01/1981",
-	"skills":["php, javascript"],
-	"projects":""
+	"skills":["php, javascript"]
 }
 
 ###

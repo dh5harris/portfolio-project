@@ -1,4 +1,5 @@
 const mongodb = require('../db/connect');
+const { userSchema } = require('../validate/validate_schema');
 
 // Get all users
 const getAll = async(req, res) => {
@@ -35,7 +36,7 @@ const getUser = async(req, res) => {
 // Create a user
 const createUser = async(req, res) => {
 	try {
-		const user = {
+		let user = {
 			username: req.body.username,
 			password: req.body.password,
 			email: req.body.email,
@@ -45,6 +46,8 @@ const createUser = async(req, res) => {
 			skills: req.body.skills,
 			projects: req.body.projects
 		};
+		user = await userSchema.validateAsync(user);
+		console.log(user);
 		const response = await mongodb.getDb().db('portfolioproject').collection('users').insertOne(user);
 		if (response.acknowledged) {
 			res.status(201).json(response);
@@ -64,7 +67,7 @@ const updateUser = async(req, res) => {
 		if(!username) {
 			res.status(400).send("A username is required");
 		}
-		const user = {
+		let user = {
 			username: req.body.username,
 			password: req.body.password,
 			email: req.body.email,
@@ -74,6 +77,7 @@ const updateUser = async(req, res) => {
 			skills: req.body.skills,
 			projects: req.body.projects
 		};
+		user = await userSchema.validateAsync(user);
 		const response = await mongodb.getDb().db('portfolioproject').collection('users').replaceOne(username, user);
 		if (response.modifiedCount > 0) {
 			res.status(204).send();
