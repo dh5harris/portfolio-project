@@ -1,0 +1,334 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple API",
+    "version": "1.0.0",
+    "title": "Simple Portfolio API",
+    "contact": {
+      "email": "you@your-company.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+	},
+  "host": "three41-portfolio-project.onrender.com",
+  "basePath": "/",
+	"tags": [
+		{
+			"name": "theme",
+			"description": "Operations for themes"
+		},
+		{
+			"name": "user",
+			"description": "Operations about user"
+		},
+		{
+			"name": "Not yet implemented",
+			"description": "These API endpoints have not been created at this time"
+		}
+	],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/theme": {
+      "get": {
+				"tags":["theme"],
+        "summary": "returns all themes",
+        "description": "By passing in the appropriate options, you can search for\navailable themes\n",
+        "operationId": "searchTheme",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/theme"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+			"post": {
+				"tags":["theme"],
+        "summary": "adds a new theme",
+        "description": "Adds a theme to the system",
+        "operationId": "addTheme",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "theme",
+            "description": "Theme item to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/theme"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+				"tags":["user"],
+        "summary": "Get all users",
+        "operationId": "searchAllUsers",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+      "post": {
+				"tags":["user"],
+        "summary": "adds a user",
+        "description": "Adds a user to the system",
+        "operationId": "addUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "User item to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        }
+      }
+    },
+		"/user/{username}": {
+      "get": {
+				"tags":["user"],
+        "summary": "searches for a specific user",
+        "description": "By passing in the appropriate options, you can search for\none specific user in the system\n",
+        "operationId": "searchUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "The username is required for looking up a user",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+      "put": {
+				"tags":["user"],
+        "summary": "updates a specific user",
+        "description": "Updates a specific user to the system",
+        "operationId": "updateUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+					{
+            "name": "username",
+            "in": "path",
+            "description": "The username is required for looking up a user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "user",
+            "description": "User item to add",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        }
+      },
+			"delete": {
+				"tags":["user"],
+        "summary": "deletes a specific user",
+        "description": "By passing in the appropriate options, you can delete \none specific user in the system\n",
+        "operationId": "deleteUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "The username is required for deleting a user",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "user": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "birthdate": {
+          "type": "string"
+        },
+        "themeName": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "prjects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/user_prjects"
+          }
+        }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "properties": {
+        "themeName": {
+          "type": "string"
+        },
+        "fontSize": {
+          "type": "string"
+        },
+        "fontColor": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        }
+      }
+    },
+    "user_prjects": {
+      "type": "object",
+      "properties": {
+        "projectTitle": {
+          "type": "string"
+        },
+        "projectDescription": {
+          "type": "string"
+        },
+        "projectSkills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "projectURL": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

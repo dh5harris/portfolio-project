@@ -1,160 +1,163 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "This is a simple API",
-    "version": "1.0.0",
-    "title": "Simple Portfolio API",
-    "contact": {
-      "email": "you@your-company.com"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    }
-	},
+    "title": "My API",
+    "description": "Contacts",
+    "version": "1.0.0"
+  },
   "host": "three41-portfolio-project.onrender.com",
   "basePath": "/",
-	"tags": [
-		{
-			"name": "theme",
-			"description": "Operations for themes"
-		},
-		{
-			"name": "user",
-			"description": "Operations about user"
-		},
-		{
-			"name": "Not yet implemented",
-			"description": "These API endpoints have not been created at this time"
-		}
-	],
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "oAuthSample": {
+      "type": "oauth2",
+      "authorizationUrl": "https://three41-portfolio-project.onrender.com/profile",
+      "flow": "implicit",
+      "scopes": {
+        "read_users": "read a user in the database",
+        "write_users": "modify a uesr in the datbase"
+      }
+    }
+  },
   "paths": {
-    "/theme": {
+    "/profile": {
       "get": {
-				"tags":["theme"],
-        "summary": "returns all themes",
-        "description": "By passing in the appropriate options, you can search for\navailable themes\n",
-        "operationId": "searchTheme",
-        "produces": [
-          "application/json"
-        ],
+        "description": "",
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "search results matching criteria",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/theme"
-              }
-            }
-          },
-          "400": {
-            "description": "bad input parameter"
-          }
-        }
-      },
-			"post": {
-				"tags":["theme"],
-        "summary": "adds a new theme",
-        "description": "Adds a theme to the system",
-        "operationId": "addTheme",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "theme",
-            "description": "Theme item to add",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/theme"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "item created"
-          },
-          "400": {
-            "description": "invalid input, object invalid"
-          },
-          "409": {
-            "description": "an existing item already exists"
+            "description": "OK"
           }
         }
       }
     },
-    "/user": {
+    "/": {
       "get": {
-				"tags":["user"],
-        "summary": "Get all users",
-        "operationId": "searchAllUsers",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/theme/": {
+      "get": {
+        "description": "",
         "produces": [
           "application/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "search results matching criteria",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/user"
-              }
-            }
-          },
-          "400": {
-            "description": "bad input parameter"
+            "description": "OK"
           }
         }
       },
       "post": {
-				"tags":["user"],
-        "summary": "adds a user",
-        "description": "Adds a user to the system",
-        "operationId": "addUser",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "description": "",
         "parameters": [
           {
+            "name": "body",
             "in": "body",
-            "name": "user",
-            "description": "User item to add",
-            "required": true,
             "schema": {
-              "$ref": "#/definitions/user"
+              "type": "object",
+              "properties": {
+                "themeName": {
+                  "example": "any"
+                },
+                "fontSize": {
+                  "example": "any"
+                },
+                "fontColor": {
+                  "example": "any"
+                },
+                "backgroundColor": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
         "responses": {
           "201": {
-            "description": "item created"
+            "description": "Created"
           },
-          "400": {
-            "description": "invalid input, object invalid"
-          },
-          "409": {
-            "description": "an existing item already exists"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-		"/user/{username}": {
+    "/user/": {
       "get": {
-				"tags":["user"],
-        "summary": "searches for a specific user",
-        "description": "By passing in the appropriate options, you can search for\none specific user in the system\n",
-        "operationId": "searchUser",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phoneNumber": {
+                  "example": "any"
+                },
+                "birthdate": {
+                  "example": "any"
+                },
+                "themeName": {
+                  "example": "any"
+                },
+                "skills": {
+                  "example": "any"
+                },
+                "projects": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/{username}": {
+      "get": {
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -162,172 +165,105 @@
           {
             "name": "username",
             "in": "path",
-            "description": "The username is required for looking up a user",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "search results matching criteria",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/user"
-              }
-            }
+            "description": "OK"
           },
           "400": {
-            "description": "bad input parameter"
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "put": {
-				"tags":["user"],
-        "summary": "updates a specific user",
-        "description": "Updates a specific user to the system",
-        "operationId": "updateUser",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "description": "",
         "parameters": [
-					{
+          {
             "name": "username",
             "in": "path",
-            "description": "The username is required for looking up a user",
             "required": true,
             "type": "string"
           },
           {
+            "name": "body",
             "in": "body",
-            "name": "user",
-            "description": "User item to add",
-            "required": false,
             "schema": {
-              "$ref": "#/definitions/user"
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phoneNumber": {
+                  "example": "any"
+                },
+                "birthdate": {
+                  "example": "any"
+                },
+                "themeName": {
+                  "example": "any"
+                },
+                "skills": {
+                  "example": "any"
+                },
+                "projects": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
         "responses": {
-          "201": {
-            "description": "item created"
+          "204": {
+            "description": "No Content"
           },
           "400": {
-            "description": "invalid input, object invalid"
+            "description": "Bad Request"
           },
-          "409": {
-            "description": "an existing item already exists"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
-			"delete": {
-				"tags":["user"],
-        "summary": "deletes a specific user",
-        "description": "By passing in the appropriate options, you can delete \none specific user in the system\n",
-        "operationId": "deleteUser",
-        "produces": [
-          "application/json"
-        ],
+      "delete": {
+        "description": "",
         "parameters": [
           {
             "name": "username",
             "in": "path",
-            "description": "The username is required for deleting a user",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "search results matching criteria",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/user"
-              }
-            }
+            "description": "OK"
           },
           "400": {
-            "description": "bad input parameter"
-          }
-        }
-      }
-    }
-  },
-  "definitions": {
-    "user": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "phoneNumber": {
-          "type": "string"
-        },
-        "birthdate": {
-          "type": "string"
-        },
-        "themeName": {
-          "type": "string"
-        },
-        "skills": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "prjects": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/user_prjects"
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "theme": {
-      "type": "object",
-      "properties": {
-        "themeName": {
-          "type": "string"
-        },
-        "fontSize": {
-          "type": "string"
-        },
-        "fontColor": {
-          "type": "string"
-        },
-        "backgroundColor": {
-          "type": "string"
-        }
-      }
-    },
-    "user_prjects": {
-      "type": "object",
-      "properties": {
-        "projectTitle": {
-          "type": "string"
-        },
-        "projectDescription": {
-          "type": "string"
-        },
-        "projectSkills": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "projectURL": {
-          "type": "string"
-        }
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     }
   }
